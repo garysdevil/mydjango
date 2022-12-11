@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('openai/', include('openai.urls')), # include() 函数允许引用其他urlconfs。每当Django遇到 include() ，它会切掉与该点匹配的URL的任何部分，并将剩余的字符串发送到包含的urlconf以进行进一步处理。
 ]
